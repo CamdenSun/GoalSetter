@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body>
+
+
+
+<style>
+ 
+#Progress {
+  width: 25%;
+  background-color: #ddd;
+}
+ 
+#Bar {
+  width: 0%;
+  height: 35px;
+  background-color: #3CAF50;
+  text-align: center;
+  line-height: 32px;
+  color: black;
+}
+ 
+ 
+</style>
+
+
+</script>
+
+
+<p id="box"></p>
+<body>
+ 
+
+ 
+<p>MileStoneProgress:</p>
+ 
+<div id="Progress">
+  <div id="Bar">1%</div>
+</div>
+ 
+<br>
+<button onclick="update()">Update</button>  
+<form id="form2">
+How Many milestones are in your goal: <input name="input2" type="text" size="20">
+</form>
+<form id="form1">
+Enter the number of milestones you have done!: <input name="input1" type="text" size="20">
+</form>
+
+
+<script>
+ 
+function update() {
+  var x,y,name,a,b,answer;
+  x=document.getElementById("form1") ;
+  y=x.elements["input1"].value;
+
+  var r = y;
+  document.getElementById("box").innerHTML = r + " done!";
+  var x,y,input2,a,b,answer;
+  x=document.getElementById("form2") ;
+  y=x.elements["input2"].value;
+  var b = y;
+  var c =(100 /(b/ r));
+  var element = document.getElementById("Bar");    
+  var width = 0;
+  var width2 = ( c);
+
+  var identity = setInterval(BarGrowth, c);
+  function BarGrowth() {
+ 
+    if (width >= c) {
+      clearInterval(identity);
+    } else {
+
+      width++;
+      element.style.width = width2 +"%";  
+      element.innerHTML = width2 +"%";
+    }
+  }
+}
+
+ 
+</script>
+  <p id="box"></p>
+</body>
+</html>   
+
+
