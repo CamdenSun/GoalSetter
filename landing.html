@@ -3,34 +3,48 @@
 	<head>
 		<title>Goal Setter</title>
 		<meta charset="utf-8">
-		<script src="jquery-3.4.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+		<script src="landing.js"></script>
 	</head>
 	<body>
 		<!-- Always shows a header, even in smaller screens. -->
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-		  <header class="mdl-layout__header">
-		    <div class="mdl-layout__header-row">
-		      <!-- Title -->
-		      <span class="mdl-layout-title">Goal Setter</span>
-		      <!-- Add spacer, to align navigation to the right -->
-		      <div class="mdl-layout-spacer"></div>
-		      <!-- Navigation. We hide it in small screens. -->
-		      <nav class="mdl-navigation mdl-layout--large-screen-only">
-		        <a class="mdl-navigation__link" href="">Create</a>
-		        <a class="mdl-navigation__link" href="">Sign In</a>
-		      </nav>
-		    </div>
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<!-- Title -->
+					<span class="mdl-layout-title">Goal Setter</span>
+					<!-- Add spacer, to align navigation to the right -->
+					<div class="mdl-layout-spacer"></div>
+					<!-- Navigation. We hide it in small screens. -->
+					<nav class="mdl-navigation mdl-layout--large-screen-only">
+				  <a class="mdl-navigation__link signUp-btn">Sign In</a>
+				  <a class="mdl-navigation__link logIn-btn">Log In</a>
+					</nav>
+			 </div>
 		  </header>
-		  <main class="mdl-layout__content">
-		    <div class="page-content">
-		    	<div class="progress-data">
-		    		<div class="progress-bar"></div>
-		    	</div>
-		    </div>
-		  </main>
+			  <main class="mdl-layout__content">
+					<div class="signUp-content">
+						<form id="signUp-form" action="home.html" method="post">
+							<p>Email: </p><input name="email" id="signUp-email" class="signUp-input" type="text">
+							<p>Password: </p><input id="signUp-password" class="signUp-input" type="password">
+							<button id="signUp-btn" type="submit">Sign Up</button>
+						</form>
+					</div>
+					<div class="logIn-content">
+						<form id="logIn-form" action="home.html" method="post">
+							<p>Email: </p><input id="logIn-email" class="logIn-input">
+							<p>Password: </p><input id="logIn-password" class="logIn-input">
+							<button id="logIn-btn" type="submit">Log In</button>
+						</form>
+					</div>
+			  </main>
 		</div>
 	</body>
 </html>
