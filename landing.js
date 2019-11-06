@@ -39,38 +39,38 @@ $(document).ready(function(){
 					email: email,
 					password: password
 				});
-				$("#signUp-form").submit();
-				message.text("Form has been submitted.");
+				document.getElementById("signUp-form").submit();
 			} else {
-				message.text("This email already exists");
+				$("#signUp-message").text("This email already exists").attr("STYLE","color: red;");
 			}
-			$("#signUp-content").append(message);
-			console.log("message appended");
 		});
 	});
 	$("#logIn-form").submit(function(e){
-		e.preventDefault(e);
-		var email = $("#logIn-email").val();
-		var password = $("#logIn-password").val();
+		e.preventDefault();
+		var email = $("#signUp-email").val();
+		var password = $("#signUp-password").val();
 
 		firebase.database().ref("users").once("value").then(function(snap){
 			var users = snap.val();
-			var usersArr = Object.keys(users);
-			var currentEmail, currentPassword;
-			var noUser = true;
-			for (var i=0;i<usersArr.length;i++){
-				currentEmail = user[usersArr[i]].email;
-				currentPassword = user[usersArr[i]].password;
-				if (currentEmail.toLowerCase() == email.toLowerCase() && currentPassword == password){
-					noUser = false;
-					break;
+			try {
+				var usersArr = Object.keys(users);
+				var currentEmail, currentPassword;
+				var noUser = true;
+				for (var i=0;i<usersArr.length;i++){
+					currentEmail = users[usersArr[i]].email;
+					currentPassword = users[usersArr[i]].password;
+					if (currentEmail.toLowerCase() == email.toLowerCase()){
+						noUser = false;
+						break;
+					}
 				}
+			} catch (error) {
+				noUser = true;
 			}
-			if (noUser){
-				var message = $("<p></p>").text("Email or password is incorrect or does not exist");
-				$("#logIn-content").append(message);
+			if (!(noUser)){
+				document.getElementById("signUp-form").submit();
 			} else {
-				$("#logIn-form").submit();
+				$("#logIn-message").text("Email or password is incorrect.").attr("STYLE","color: red;");
 			}
 		});
 	});
