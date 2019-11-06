@@ -47,8 +47,8 @@ $(document).ready(function(){
 	});
 	$("#logIn-form").submit(function(e){
 		e.preventDefault();
-		var email = $("#signUp-email").val();
-		var password = $("#signUp-password").val();
+		var email = $("#logIn-email").val();
+		var password = $("#logIn-password").val();
 
 		firebase.database().ref("users").once("value").then(function(snap){
 			var users = snap.val();
@@ -59,7 +59,7 @@ $(document).ready(function(){
 				for (var i=0;i<usersArr.length;i++){
 					currentEmail = users[usersArr[i]].email;
 					currentPassword = users[usersArr[i]].password;
-					if (currentEmail.toLowerCase() == email.toLowerCase()){
+					if (currentEmail.toLowerCase() == email.toLowerCase() && currentPassword == password){
 						noUser = false;
 						break;
 					}
@@ -68,7 +68,7 @@ $(document).ready(function(){
 				noUser = true;
 			}
 			if (!(noUser)){
-				document.getElementById("signUp-form").submit();
+				document.getElementById("logIn-form").submit();
 			} else {
 				$("#logIn-message").text("Email or password is incorrect.").attr("STYLE","color: red;");
 			}
