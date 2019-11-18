@@ -1,10 +1,10 @@
-#Progress {
+.percent {
   width: 25%;
   background-color: #ddd;
   border-color: black;
 }
  
-#Bar {
+.bar {
   width: 0%;
   height: 35px;
   background-color: #3CAF50;

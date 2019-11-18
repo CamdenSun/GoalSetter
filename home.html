@@ -3,30 +3,43 @@
   <head>
       <meta charset='utf-8'>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <link href="home.css">
-      <script src="home.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
-      <script src="firebase.js"></script>
+      <script>
+         var firebaseConfig = {
+            apiKey: "AIzaSyDCk7bWbSnRr1M_9RgpUmGSra7_98OsS80",
+            authDomain: "fir-39893.firebaseapp.com",
+            databaseURL: "https://fir-39893.firebaseio.com",
+            projectId: "fir-39893",
+            storageBucket: "fir-39893.appspot.com",
+            messagingSenderId: "817598980919",
+            appId: "1:817598980919:web:69c9a6e1306703f170b0b2"
+         };
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+      </script>
+      <script src="home.js"></script>
+      <link href="home.css">
   </head>
-
    <body>
-      <p id="box"></p>
-
-      <p>MileStoneProgress:</p>
-    
-      <div id="Progress">
-         <div id="Bar">0%</div>
-      </div>
-       
-      <br>
-      <form id="setGoal-form">
-         <!--p>How frequent do you want to be notified?</p><input id="noti" type="text"-->
-         <p>How Many milestones are in your goal: </p><input id="milestones" name="input1" type="text" size="20">
-         <p>Enter the number of milestones you have done: </p><input id="completed" name="input2" type="text" size="20">
-         <button type="submit">Update</button>
+      <form id="goal-form">
+         <p>Enter the title of the goal</p>
+         <input id="title" type="text">
+         <p>Enter the number of milestones required to complete this goal</p>
+         <input id="ms" type="text">
+         <p>Enter the number of milestones you have completed</p>
+         <input id="done" type="text">
+         <button type="submit">Create</button>
       </form>
-     <p id="box"></p>
+      <div id="goals-list">
+         <!--div id="template">
+            <p id="template-title"></p>
+            <div id="template-bar"><p id="template-percent"></p></div>
+         </div-->
+      </div>
    </body>
 </html>   
 
